@@ -15,7 +15,7 @@
                         <div class="card-body mybody">
                             <form method="get" action="{% url 'lista_carros' %}">
                                 <input type="number" name="id" placeholder="Procure pelo ID">
-                                <button type="submit" class="btn btn-outline-primary btn-sm">Buscar</button><hr>
+                                <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button><hr>
                             
                             <b>ID: {{ id_unico }}<hr>
                             Nome do Carro: {{ nome }}<hr>
@@ -27,7 +27,7 @@
                             Turbo: {{ motorizacao }}<hr>
                             Data que chegou na loja: {{ chegou_loja }}<hr>
                             Data que foi vendido: {{ saiu_loja }}<hr>
-                            Tem em estoque: {{ ativo }}</b>
+                            Tem em estoque: {{ estoque }}</b>
                         </form>
                         </div>
                     </div>

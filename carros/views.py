@@ -1,8 +1,8 @@
-from urllib.request import Request
 from rest_framework import viewsets
 from django.shortcuts import render
 from .models import Carros
 from .serializer import CarrosSerializer
+from datetime import datetime
 import requests
 
 class CarrosViewSet(viewsets.ModelViewSet):
@@ -27,7 +27,7 @@ def list_carros(request):
         motorizacao = resposta['motorizacao']
         chegou_loja = resposta['chegou_loja']
         saiu_loja = resposta['saiu_loja']
-        ativo = resposta['ativo']
+        estoque = resposta['estoque']
         context = {
             'id_unico': id_unico,
             'nome': nome,
@@ -39,7 +39,7 @@ def list_carros(request):
             'motorizacao': motorizacao,
             'chegou_loja': chegou_loja,
             'saiu_loja': saiu_loja,
-            'ativo': ativo,
+            'estoque': estoque,
         }
         return render(request,'carros/carros_list.html', context)
     
