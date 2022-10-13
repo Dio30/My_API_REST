@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+{% block title %}Editar{% endblock %}
+
+{% block main %}
+
+{% include 'mensagens.html' %}
+
+<div class="form-content my-4">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-5">
+                <div class="card shadow-lg border-1 rounded-lg">
+                    <div class="card-header justify-content-center mycardheader">
+                        <h2 class="font-weight-dark text-center">Editar Carro</h2>
+                    </div>
+                    <div class="card-body mybody">
+                        <form method="post" action="{% url 'editar_carro' %}">
+                            {% csrf_token %}
+
+                            <input type="number" name="id" placeholder="Procure pelo ID">
+                            <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button><hr>
+
+                            <b><label>Nome do Carro</label>
+                            <input type="text" name="nome" placeholder="Digite o nome do carro" class="form-control" value="{{ nome }}" required><br>
+
+                            <label>Modelo do Carro</label>
+                            <input type="text" name="modelo" placeholder="Digite o modelo do carro" class="form-control" value="{{ modelo }}" required><br>
+
+                            <label>Ano de Fabricação</label>
+                            <input type="number" name="ano_de_fabricacao" placeholder="Digite o ano de fabricação" class="form-control" 
+                            value="{{ ano_de_fabricacao }}" required><br>
+
+                            <label>Ano do Modelo</label>
+                            <input type="number" name="ano_do_modelo" placeholder="Digite o ano do modelo" class="form-control" 
+                            value="{{ ano_do_modelo }}" required><br>
+
+                            <label>Valor do Carro</label>
+                            <input type="number" name="valor" placeholder="Digite o valor do carro" class="form-control" 
+                            value="{{ valor }}" required><br>
+
+                            <label>Motor do Carro</label>
+                            <input type="number" name="motor" placeholder="Digite o motor do carro" class="form-control" 
+                            value="{{ motor }}" required><br>
+
+                            <label>Turbo</label>
+                            <input type="text" name="motorizacao" placeholder="O carro tem turbo?" class="form-control" 
+                            value="{{ motorizacao }}" required><br>
+
+                            <label>Data de Entrada</label>
+                            <input type="date" name="chegou_loja" placeholder="Digite a data de entrada do carro" class="form-control" 
+                            value="{{ chegou_loja }}" required><br>
+
+                            <label>Data de Saida</label>
+                            <input type="date" name="saiu_loja" placeholder="Digite a data de saida do carro" class="form-control" 
+                            value="{{ saiu_loja }}" required><br>
+
+                            <label>Estoque</label>
+                            <input type="text" name="estoque" placeholder="Tem em estoque?" class="form-control" 
+                            value="{{ estoque }}" required><br></b>
+
+                            <center><button type="submit" class="btn btn-warning mx-3">Editar</button>
+                            <a href="{% url 'lista_carros' %}" class="btn btn-success mx-3">Voltar</a></center>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
