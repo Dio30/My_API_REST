@@ -14,7 +14,7 @@ class Carros(models.Model):
     motor = models.DecimalField(max_digits=2, decimal_places=1)
     motorizacao = models.CharField(max_length=3, default='Não', verbose_name='Turbo')
     chegou_loja = models.DateField(verbose_name='Quando chegou na loja')
-    saiu_loja = models.DateField(verbose_name='Quando foi vendido')
+    saiu_loja = models.DateField(verbose_name='Quando foi vendido', null=True, blank=True)
     estoque = models.CharField(max_length=200, default='Sim', verbose_name='Tem em estoque?')
     usuario = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
     
