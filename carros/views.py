@@ -4,7 +4,7 @@ from .serializer import CarrosSerializer
 
 class CarrosViewSet(viewsets.ModelViewSet):
     """
-    API para fazer um CRUD completo de carros simulando uma conssessionária.
+    API para fazer um CRUD completo simulando uma conssessionária de carros.
     """
     queryset = Carros.objects.all()
     serializer_class = CarrosSerializer

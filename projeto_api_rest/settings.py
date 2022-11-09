@@ -136,11 +136,6 @@ USE_L10N = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = 'static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATICFILES_DIRS = [ BASE_DIR / "static", ]
-
-MEDIA_URL = 'media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
@@ -150,10 +145,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework.authentication.SessionAuthentication',
-        'rest_framework.authentication.TokenAuthentication', #melhor em questão de segurança
+        'rest_framework.authentication.TokenAuthentication', # melhor em questão de segurança
     ),
     
-    'DEFAULT_PERMISSION_CLASSES': (
+    'DEFAULT_PERMISSION_CLASSES': ( # Se o usuario for autenticado por token ou por usuario e senha poderá fazer o CRUD completo, se não for só poderá ler os arquivos da API
         'rest_framework.permissions.IsAuthenticatedOrReadOnly',
          ),
         
@@ -161,14 +156,14 @@ REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 2,
     
-    'DEFAULT_THROTTLE_CLASSES': (
+    'DEFAULT_THROTTLE_CLASSES': ( # limites de requisições se o usuario for autenticado ou não
         'rest_framework.throttling.AnonRateThrottle',
         'rest_framework.throttling.UserRateThrottle',
     ),
 
     
-    'DEFAULT_THROTTLE_RATES': {
-        'anon': '5/minute',
-        'user': '10/minute',
+    'DEFAULT_THROTTLE_RATES': { # quantas requisições por minuto se o usuario for autenticado ou não
+        'anon': '20/minute',
+        'user': '100/minute',
     }
 }
